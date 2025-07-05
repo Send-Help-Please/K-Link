@@ -1,0 +1,1 @@
+export const ERROR_FETCHING_ERROR_CODES = "Error fetching error codes from database";

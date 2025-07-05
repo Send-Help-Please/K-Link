@@ -1,0 +1,1 @@
+CREATE TYPE verification_type AS ENUM('ACCOUNT', 'EMAIL', 'PASSWORD');
