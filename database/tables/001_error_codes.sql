@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS error_codes (
     id SERIAL PRIMARY KEY,
     code VARCHAR(5) NOT NULL,
-    key VARCHAR(30) NOT NULL,
+    "key" VARCHAR(30) NOT NULL,
     message VARCHAR(255) NOT NULL,
 
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
@@ -12,8 +12,10 @@ CREATE TABLE IF NOT EXISTS error_codes (
 
 CREATE UNIQUE INDEX unique_error_codes_code ON error_codes (code, is_deleted);
 
-INSERT INTO error_codes(code, key, message) VALUES (
-    ("U0001", "USERNAME_TAKEN", "Username already taken"),
-    ("U0002", "EMAIL_TAKEN", "Email already taken"),
-    ("T0001", "TOKEN_TAKEN", "Token already taken")
-);
+INSERT INTO error_codes (code, "key", message) VALUES
+('U0001', 'USERNAME_TAKEN', 'Username already taken'),
+('U0002', 'EMAIL_TAKEN', 'Email already taken'),
+('T0001', 'TOKEN_TAKEN', 'Token already taken'),
+('T0002', 'TOKEN_NOT_FOUND', 'Token not found'),
+('T0003', 'TOKEN_EXPIRED', 'Token expired'),
+('U0003', 'USER_NOT_FOUND', 'User not found');

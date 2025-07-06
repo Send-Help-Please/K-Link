@@ -1,0 +1,6 @@
+export const USERNAME_TAKEN = "USERNAME_TAKEN";
+export const EMAIL_TAKEN = "EMAIL_TAKEN";
+export const TOKEN_TAKEN = "TOKEN_TAKEN";
+export const TOKEN_NOT_FOUND = "TOKEN_NOT_FOUND";
+export const TOKEN_EXPIRED = "TOKEN_EXPIRED";
+export const USER_NOT_FOUND = "USER_NOT_FOUND";

@@ -1,0 +1,22 @@
+import { 
+    JWT_ACCESS_EXPIRATION_TIME, 
+    JWT_ACCESS_SECRET, 
+    JWT_REFRESH_EXPIRATION_TIME, 
+    JWT_REFRESH_SECRET, 
+    JWT_VERIFICATION_EXPIRATION_TIME, 
+    JWT_VERIFICATION_SECRET 
+} from "../constants/ENVParameters";
+import handleConfig from "./configHandler";
+
+const jwtConfigList = [
+    JWT_VERIFICATION_SECRET,
+    JWT_VERIFICATION_EXPIRATION_TIME,
+    JWT_ACCESS_SECRET,
+    JWT_ACCESS_EXPIRATION_TIME,
+    JWT_REFRESH_SECRET,
+    JWT_REFRESH_EXPIRATION_TIME
+] as const;
+
+const JWT_CONFIG = handleConfig(jwtConfigList);
+
+export default JWT_CONFIG;

@@ -10,8 +10,8 @@ DECLARE
 BEGIN
     SELECT * INTO v_verification FROM verifications WHERE token = p_token AND is_deleted = 0 LIMIT 1;
     IF v_verification IS NOT NULL THEN
-        SELECT * INTO v_error FROM get_error('TOKEN_TAKEN');
-        RAISE EXCEPTION v_error.message USING ERRCODE = v_error.code;
+        v_error := get_error('TOKEN_TAKEN');
+        RAISE EXCEPTION USING MESSAGE = v_error.message, ERRCODE = v_error.code;
     END IF;
 
     INSERT INTO verifications (user_id, token, type) VALUES (p_user_id, p_token, p_type) RETURNING id INTO v_verification_id;
