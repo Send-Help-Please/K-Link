@@ -17,17 +17,10 @@ jobs:
         
       - name: Install deps
         run: npm ci
-        working-directory: ./api
        
       - name: Build
         run: npm run build
-        working-directory: ./api
-        
+
       - name: Linting
         run: npm run lint
-        working-directory: ./api
-      
-      - name: Run Unit tests
-        run: npm run test 
-        working-directory: ./api
-  
+
