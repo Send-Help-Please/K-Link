@@ -2,14 +2,12 @@ name: CICD for K-link
 
 on:
   push: 
-    branches: ['main']
   pull_request:
-    branches: ['main']
     
 jobs:
   js-code:
     runs-on: ubuntu-latest
-    
+    container: node:22-slim
     permissions:
       contents: read
       
@@ -17,18 +15,14 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v3
         
-      - name: Setup
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22.17.0
-          cache: npm
-        
       - name: Install deps
-        run: npm ci
+        run: yarn install
        
+      - name: Build
+        run: yarn build
+        
       - name: Linting
-        run: npm run lint
+        run: yarn lint
       
       - name: Run Unit tests
-        run: npm test 
-      
+        run: yarn test 
