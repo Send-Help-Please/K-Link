@@ -1,0 +1,28 @@
+name: CICD for K-link
+
+on:
+  push: 
+  pull_request:
+    
+jobs:
+  js-code:
+    runs-on: ubuntu-latest
+    container: node:22-slim
+    permissions:
+      contents: read
+      
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+        
+      - name: Install deps
+        run: yarn install
+       
+      - name: Build
+        run: yarn build
+        
+      - name: Linting
+        run: yarn lint
+      
+      - name: Run Unit tests
+        run: yarn test 
